@@ -1,0 +1,149 @@
+
+
+
+Chap25
+Break dependencies, decoupe classes => under test => more maintainable => make the design cleaner
+Not exhaustive
+
+Your bias should be toward making changes that you feel more confident in rather than changes that give you the best structure.
+
+1.Adapt Parameter
+Extract Interface (362) doesn’t work very well.
+
+2.Primitivize Parameter
+Downsides
+	1. Exposed the internal representation of Sequence.
+	2. Made the implementation of Sequence a little tougher to understand by pushing some of it off into a
+	free function.
+	3. Written some untested code (we couldn’t really write a test for getDurationsCopy()).
+	4. Duplicated data in the system.
+	5. Prolonged the problem. We haven’t started to do the hard work of breaking dependencies
+	between our domain classes and the infrastructure. (That is the one thing that will make a large
+	difference as we move forward, and it is still ahead of us.)
+
+3.Encapsulate Global References
+
+4.Replace Global Reference with Getter
+
+
+5.Pull Up Feature
+the methods you want to work with don’t directly or indirectly reference any of the bad dependencies.
+
+You might be wondering why we make the superclass abstract. I like to make it abstract so that the code is easier to understand. It is
+great to be able to look at the code in an application and know that every concrete class is being used.
+
+6.Push Down Dependency
+if the dependencies are pervasive, Subclass and Override Method might
+not work. You might have to use Extract Interface (362) several times to remove dependencies on
+particular types. Push Down Dependency is another option.
+
+
+separate problematic dependencies from the rest of the class
+
+7.Break Out Method Object
+
+8.Extract Implementer
+Extract Interface (362) is a handy technique, but one part of it is hard: naming.
+
+When the name of a class is perfect for the name of an interface and I don’t have automated
+refactoring tools, I use Extract Implementer to get the separation I need.
+
+
+9.Extract Interface
+
+Deal with Non-Virtual Functions
+
+10.Extract and Override Factory Method	
+Object creation in constructors
+
+11.Parameterize Constructor
+the easiest way to replace it is to externalize its
+creation, create the object outside the class, and make clients pass it into the constructor as a
+parameter.
+
+When we add a new parameter
+to a constructor, we are opening the door to further dependencies on the parameter’s class. Users of
+the class can use the new constructor in production code and increase dependencies across the
+system.
+
+
+12.Extract and Override Getter
+	10. => can’t call a virtual function in a derived class from a base class’s constructor.
+
+13.Introduce Static Setter
+
+
+14.Supersede Instance Variable
+	languages that disallow overrides of virtual function calls in constructors
+
+15.Template Redefinition
+
+16.Parameterize Method
+have a method that creates an object internally, and you want to replace the object to sense or
+separate. Often the easiest way to do this is to pass the object from the outside.
+
+
+17.Definition Completion
+
+
+18.Link Substitution
+
+
+19.Expose Static Method
+classes that can’t be instantiated in a test harness
+method that doesn’t use instance data or methods
+
+20.Extract and Override Call
+
+21.Introduce Instance Delegator
+
+22.Replace Function With Function Pointer
+
+23.Text Redefinition
+
+24.Subclass And Override Method
+
+25.Appendix - Extract Method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
